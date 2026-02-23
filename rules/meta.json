@@ -1,0 +1,48 @@
+{
+  "$schema": "rubi-integration-rules/v0.1",
+  "pirf_version": "0.1.0-draft",
+  "rubi_version": "4.16.1",
+  "license": "MIT",
+  "description": "Minimal PIRF sample rule set — linear binomial rules from RUBI Section 1.1.1",
+  "rule_count": 3,
+  "test_count": 3,
+
+  "feature_flags": {
+    "load_elementary_function_rules": true,
+    "load_bessel_functions": false
+  },
+
+  "load_order": [
+    "1-algebraic/1.1-binomial/1.1.1-linear/1.1.1.1-(a+b-x)^m.json"
+  ],
+
+  "taxonomy": [
+    { "section": 1, "title": "Algebraic functions" },
+    { "section": 2, "title": "Exponentials" },
+    { "section": 3, "title": "Logarithms" },
+    { "section": 4, "title": "Trig functions" },
+    { "section": 5, "title": "Inverse trig functions" },
+    { "section": 6, "title": "Hyperbolic functions" },
+    { "section": 7, "title": "Inverse hyperbolic functions" },
+    { "section": 8, "title": "Special functions" },
+    { "section": 9, "title": "Miscellaneous" }
+  ],
+
+  "predicates": [
+    "FreeQ", "NeQ", "EqQ", "IntegerQ", "PositiveIntegerQ",
+    "NegativeIntegerQ", "FractionQ", "IGtQ", "ILtQ",
+    "ZeroQ", "NonzeroQ", "PositiveQ", "NegativeQ",
+    "PolynomialQ", "LinearQ", "PowerQ", "SumQ", "ProductQ",
+    "And", "Or", "Not"
+  ],
+
+  "utility_functions": [
+    "NormalizeIntegrand", "SimplifyIntegrand", "Rt",
+    "Coefficient", "Exponent", "Numerator", "Denominator",
+    "LeadTerm", "RemainingTerms", "LeadFactor", "RemainingFactors",
+    "Simplify", "Factor", "Expand", "Together", "Cancel"
+  ],
+
+  "extensions": [],
+  "custom_predicates": []
+}

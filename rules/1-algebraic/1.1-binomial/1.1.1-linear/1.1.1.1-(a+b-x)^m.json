@@ -1,0 +1,68 @@
+{
+  "$schema": "rubi-integration-rules/v0.1",
+  "section": "1.1.1",
+  "title": "(a+b x)^m",
+  "rules": [
+    {
+      "id": 1,
+      "pattern": ["Power", ["Add", "a.", ["Multiply", "b.", "x_"]], "m."],
+      "constraints": [
+        ["FreeQ", ["List", "a.", "b.", "m."], "x_"],
+        ["NeQ", "m.", -1]
+      ],
+      "result": ["Simp",
+        ["Divide",
+          ["Power", ["Add", "a.", ["Multiply", "b.", "x_"]], ["Add", "m.", 1]],
+          ["Multiply", "b.", ["Add", "m.", 1]]
+        ],
+        "x_"
+      ],
+      "description": "∫(a+b·x)^m dx → (a+b·x)^(m+1) / (b·(m+1)), m≠-1",
+      "derivation": "Power rule for linear binomials",
+      "references": { "CRC": "1" }
+    },
+    {
+      "id": 2,
+      "pattern": ["Power", ["Add", "a_", ["Multiply", "b_", "x_"]], -1],
+      "constraints": [
+        ["FreeQ", ["List", "a_", "b_"], "x_"]
+      ],
+      "result": ["Simp",
+        ["Divide",
+          ["Log", ["Add", "a_", ["Multiply", "b_", "x_"]]],
+          "b_"
+        ],
+        "x_"
+      ],
+      "description": "∫1/(a+b·x) dx → log(a+b·x) / b",
+      "derivation": "Logarithmic rule for linear denominator",
+      "references": { "CRC": "2" }
+    },
+    {
+      "id": 3,
+      "pattern": ["Multiply", "x_", ["Power", ["Add", "a.", ["Multiply", "b.", "x_"]], "m."]],
+      "constraints": [
+        ["FreeQ", ["List", "a.", "b.", "m."], "x_"],
+        ["NeQ", "m.", -1],
+        ["NeQ", "m.", -2]
+      ],
+      "result": ["Simp",
+        ["Subtract",
+          ["Divide",
+            ["Power", ["Add", "a.", ["Multiply", "b.", "x_"]], ["Add", "m.", 2]],
+            ["Multiply", ["Power", "b.", 2], ["Add", "m.", 2]]
+          ],
+          ["Divide",
+            ["Multiply", "a.",
+              ["Power", ["Add", "a.", ["Multiply", "b.", "x_"]], ["Add", "m.", 1]]
+            ],
+            ["Multiply", ["Power", "b.", 2], ["Add", "m.", 1]]
+          ]
+        ],
+        "x_"
+      ],
+      "description": "∫x·(a+b·x)^m dx → (a+b·x)^(m+2)/(b²·(m+2)) - a·(a+b·x)^(m+1)/(b²·(m+1))",
+      "derivation": "Integration by parts / binomial expansion for x·(a+b·x)^m"
+    }
+  ]
+}

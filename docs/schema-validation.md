@@ -1,0 +1,101 @@
+# JSON Schema Validation
+
+PIRF uses JSON Schema (draft-07) to enforce the structure of all rule
+files, test fixtures, and the load manifest. Four schemas validate the
+project's JSON data files.
+
+## Schema Files
+
+| Schema | Validates | Location |
+|--------|-----------|----------|
+| `pirf-expr.schema.json` | Shared expression type (referenced by others) | `schemas/` |
+| `rule-file.schema.json` | Rule files in `rules/` | `schemas/` |
+| `test-file.schema.json` | Test fixtures in `tests/` | `schemas/` |
+| `meta.schema.json` | `rules/meta.json` manifest | `schemas/` |
+
+## Local Validation
+
+### Install
+
+```bash
+pip install check-jsonschema
+```
+
+### Validate All Files
+
+```bash
+./validate.sh
+```
+
+This runs all 4 validation steps and reports pass/fail for each.
+
+### Validate Individual Files
+
+```bash
+# Validate a rule file
+check-jsonschema \
+  --schemafile schemas/rule-file.schema.json \
+  --base-uri "file://${PWD}/schemas/" \
+  rules/1-algebraic/1.1-binomial/1.1.1-linear/1.1.1.1-\(a+b-x\)^m.json
+
+# Validate meta.json
+check-jsonschema --schemafile schemas/meta.schema.json rules/meta.json
+
+# Validate a test file
+check-jsonschema \
+  --schemafile schemas/test-file.schema.json \
+  --base-uri "file://${PWD}/schemas/" \
+  tests/1-algebraic/1.1-binomial/1.1.1-linear/1.1.1.1-\(a+b-x\)^m.json
+
+# Verify schemas themselves are valid JSON Schema
+check-jsonschema --check-metaschema schemas/*.schema.json
+```
+
+### Verbose Output
+
+Add `-v` for detailed error reporting:
+
+```bash
+check-jsonschema --schemafile schemas/rule-file.schema.json \
+  --base-uri "file://${PWD}/schemas/" \
+  rules/1-algebraic/1.1-binomial/1.1.1-linear/1.1.1.1-\(a+b-x\)^m.json -v
+```
+
+## Schema-to-Directory Mapping
+
+| Directory | Schema | Notes |
+|-----------|--------|-------|
+| `rules/meta.json` | `meta.schema.json` | Single file |
+| `rules/**/*.json` (excl. meta.json) | `rule-file.schema.json` | Recursive |
+| `tests/**/*.json` | `test-file.schema.json` | Recursive |
+| `schemas/*.schema.json` | JSON Schema draft-07 meta-schema | Self-validation |
+
+## Cross-File Reference Resolution
+
+The `--base-uri "file://${PWD}/schemas/"` flag is required because
+`rule-file.schema.json` and `test-file.schema.json` contain `$ref`
+references to `pirf-expr.schema.json`. This flag overrides the `$id`
+URI (`https://domain.org/schemas/v0.1/...`) to resolve references
+against local files.
+
+## CI/CD Enforcement
+
+A GitHub Actions workflow (`.github/workflows/validate-schemas.yml`)
+runs schema validation automatically on:
+
+- Every push that modifies `rules/`, `tests/`, or `schemas/`
+- Every pull request that modifies those directories
+
+If validation fails, the CI check blocks the merge and reports the
+specific file and field that failed.
+
+## Updating Schemas
+
+When modifying schemas:
+
+1. Edit the schema file in `schemas/`.
+2. Run `check-jsonschema --check-metaschema schemas/*.schema.json` to
+   verify the schema is still valid.
+3. Run `./validate.sh` to verify existing data files still pass.
+4. Commit the schema change alongside any data file changes.
+5. Include a migration note in the PR describing impact on consumers.

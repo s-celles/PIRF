@@ -1,0 +1,60 @@
+name: Validate JSON Schemas
+
+on:
+  push:
+    paths:
+      - 'rules/**/*.json'
+      - 'tests/**/*.json'
+      - 'schemas/**/*.json'
+  pull_request:
+    paths:
+      - 'rules/**/*.json'
+      - 'tests/**/*.json'
+      - 'schemas/**/*.json'
+
+jobs:
+  validate:
+    name: JSON Schema Validation
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Install check-jsonschema
+        run: pip install check-jsonschema
+
+      - name: Validate schemas against meta-schema
+        run: check-jsonschema --check-metaschema schemas/*.schema.json
+
+      - name: Validate meta.json
+        run: check-jsonschema --schemafile schemas/meta.schema.json rules/meta.json
+
+      - name: Validate rule files
+        run: |
+          RULE_FILES=$(find rules/ -name '*.json' ! -name 'meta.json')
+          if [ -n "$RULE_FILES" ]; then
+            check-jsonschema \
+              --schemafile schemas/rule-file.schema.json \
+              --base-uri "file://${PWD}/schemas/" \
+              $RULE_FILES
+          else
+            echo "No rule files found to validate"
+          fi
+
+      - name: Validate test files
+        run: |
+          TEST_FILES=$(find tests/ -name '*.json')
+          if [ -n "$TEST_FILES" ]; then
+            check-jsonschema \
+              --schemafile schemas/test-file.schema.json \
+              --base-uri "file://${PWD}/schemas/" \
+              $TEST_FILES
+          else
+            echo "No test files found to validate"
+          fi
