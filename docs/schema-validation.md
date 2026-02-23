@@ -89,6 +89,37 @@ runs schema validation automatically on:
 If validation fails, the CI check blocks the merge and reports the
 specific file and field that failed.
 
+## Operator and Predicate Enums
+
+The `pirf-expr.schema.json` schema contains enum definitions that
+document every operator and predicate in the PIRF-Expr catalogue.
+These enums are for documentation and tooling — the `operator-name`
+regex pattern (`^[A-Z][a-zA-Z0-9$]*$`) is what actually validates
+operator names in expressions.
+
+| Definition | Count | Spec Reference |
+|------------|-------|----------------|
+| `core-arithmetic-operators` | 9 | PIRF-X-010 |
+| `trig-operators` | 6 | PIRF-X-011 |
+| `hyperbolic-operators` | 6 | PIRF-X-012 |
+| `inverse-trig-operators` | 6 | PIRF-X-013 |
+| `inverse-hyperbolic-operators` | 6 | PIRF-X-014 |
+| `exp-log-operators` | 2 | PIRF-X-015 |
+| `special-function-operators` | 29 | PIRF-X-016 |
+| `constant-symbols` | 7 | PIRF-X-017 |
+| `integration-operators` | 7 | PIRF-X-018 |
+| `utility-function-operators` | 54 | PIRF-X-019 (§4.11) |
+| `structural-utility-operators` | 28 | PIRF-X-020 (§4.12) |
+| `predicate-names` | 77 | PIRF-C-001 to C-030 (§7) |
+
+## Taxonomy Subsections
+
+The `meta.schema.json` supports optional `subsections` arrays in
+taxonomy entries, enabling machine-readable representation of the
+full RUBI hierarchy (e.g. Section 1 > 1.1 Binomial products >
+1.1.1 Linear). Subsection numbers use dotted string format
+(e.g. `"1.1"`, `"1.1.1"`, `"8.10"`).
+
 ## Updating Schemas
 
 When modifying schemas:

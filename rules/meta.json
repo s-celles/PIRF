@@ -17,30 +17,167 @@
   ],
 
   "taxonomy": [
-    { "section": 1, "title": "Algebraic functions" },
-    { "section": 2, "title": "Exponentials" },
-    { "section": 3, "title": "Logarithms" },
-    { "section": 4, "title": "Trig functions" },
-    { "section": 5, "title": "Inverse trig functions" },
-    { "section": 6, "title": "Hyperbolic functions" },
-    { "section": 7, "title": "Inverse hyperbolic functions" },
-    { "section": 8, "title": "Special functions" },
-    { "section": 9, "title": "Miscellaneous" }
+    {
+      "section": 1, "title": "Algebraic functions",
+      "subsections": [
+        {
+          "section": "1.1", "title": "Binomial products",
+          "subsections": [
+            { "section": "1.1.1", "title": "Linear" },
+            { "section": "1.1.2", "title": "Quadratic" },
+            { "section": "1.1.3", "title": "General" },
+            { "section": "1.1.4", "title": "Improper" }
+          ]
+        },
+        {
+          "section": "1.2", "title": "Trinomial products",
+          "subsections": [
+            { "section": "1.2.1", "title": "Quadratic" },
+            { "section": "1.2.2", "title": "Quartic" },
+            { "section": "1.2.3", "title": "General" },
+            { "section": "1.2.4", "title": "Improper" }
+          ]
+        },
+        { "section": "1.3", "title": "Miscellaneous" }
+      ]
+    },
+    {
+      "section": 2, "title": "Exponentials",
+      "subsections": [
+        { "section": "2.1", "title": "u F^(a+b x)" },
+        { "section": "2.2", "title": "Exponential x powers" },
+        { "section": "2.3", "title": "Miscellaneous exponentials" }
+      ]
+    },
+    {
+      "section": 3, "title": "Logarithms",
+      "subsections": [
+        { "section": "3.1", "title": "u (a+b log(c x^n))^p" },
+        { "section": "3.2", "title": "Logarithm products" },
+        { "section": "3.3", "title": "u log(e (a+b x)^n (c+d x)^p)^q" },
+        { "section": "3.4", "title": "Logarithm trig products" },
+        { "section": "3.5", "title": "Miscellaneous logarithms" }
+      ]
+    },
+    {
+      "section": 4, "title": "Trig functions",
+      "subsections": [
+        { "section": "4.1", "title": "Sine" },
+        { "section": "4.3", "title": "Tangent" },
+        { "section": "4.5", "title": "Secant" },
+        { "section": "4.7", "title": "Miscellaneous" }
+      ]
+    },
+    {
+      "section": 5, "title": "Inverse trig functions",
+      "subsections": [
+        { "section": "5.1", "title": "Inverse sine" },
+        { "section": "5.3", "title": "Inverse tangent" },
+        { "section": "5.5", "title": "Inverse secant" }
+      ]
+    },
+    {
+      "section": 6, "title": "Hyperbolic functions",
+      "subsections": [
+        { "section": "6.1", "title": "Hyperbolic sine" },
+        { "section": "6.3", "title": "Hyperbolic tangent" },
+        { "section": "6.5", "title": "Hyperbolic secant" },
+        { "section": "6.7", "title": "Miscellaneous" }
+      ]
+    },
+    {
+      "section": 7, "title": "Inverse hyperbolic functions",
+      "subsections": [
+        { "section": "7.1", "title": "Inverse hyperbolic sine" },
+        { "section": "7.3", "title": "Inverse hyperbolic tangent" },
+        { "section": "7.5", "title": "Inverse hyperbolic secant" }
+      ]
+    },
+    {
+      "section": 8, "title": "Special functions",
+      "subsections": [
+        { "section": "8.1", "title": "Error functions" },
+        { "section": "8.2", "title": "Fresnel integrals" },
+        { "section": "8.3", "title": "Exponential integral functions" },
+        { "section": "8.4", "title": "Trig integral functions" },
+        { "section": "8.5", "title": "Hyperbolic integral functions" },
+        { "section": "8.6", "title": "Gamma functions" },
+        { "section": "8.7", "title": "Zeta function" },
+        { "section": "8.8", "title": "Polylogarithm functions" },
+        { "section": "8.9", "title": "Product logarithm function" },
+        { "section": "8.10", "title": "Bessel functions" }
+      ]
+    },
+    {
+      "section": 9, "title": "Miscellaneous",
+      "subsections": [
+        { "section": "9.1", "title": "Integrand simplification" },
+        { "section": "9.2", "title": "Derivative integration" },
+        { "section": "9.3", "title": "Piecewise linear" },
+        { "section": "9.4", "title": "Miscellaneous integration" }
+      ]
+    }
   ],
 
   "predicates": [
-    "FreeQ", "NeQ", "EqQ", "IntegerQ", "PositiveIntegerQ",
-    "NegativeIntegerQ", "FractionQ", "IGtQ", "ILtQ",
-    "ZeroQ", "NonzeroQ", "PositiveQ", "NegativeQ",
-    "PolynomialQ", "LinearQ", "PowerQ", "SumQ", "ProductQ",
+    "FreeQ", "IndependentQ",
+
+    "IntegerQ", "PositiveIntegerQ", "NegativeIntegerQ", "FractionQ",
+    "RationalQ", "ComplexNumberQ", "RealNumericQ", "SqrtNumberQ",
+    "SqrtNumberSumQ", "FractionOrNegativeQ", "FractionalPowerOfSquareQ",
+
+    "IGtQ", "ILtQ", "IGeQ", "ILeQ", "IntegersQ",
+
+    "EqQ", "NeQ", "GtQ", "LtQ", "GeQ", "LeQ",
+
+    "ZeroQ", "NonzeroQ", "PositiveQ", "NegativeQ", "OddQ", "EvenQ",
+
+    "PolynomialQ", "LinearQ", "QuadraticQ", "BinomialQ", "TrinomialQ",
+    "PowerQ", "SumQ", "ProductQ", "IntegerPowerQ", "FractionalPowerQ",
+    "QuotientOfLinearsQ",
+
+    "TrigQ", "HyperbolicQ", "InverseTrigQ", "InverseHyperbolicQ",
+    "LogQ", "InverseFunctionQ", "ElementaryFunctionQ",
+    "AlgebraicFunctionQ", "AlgebraicTrigFunctionQ",
+    "RationalFunctionQ", "BinomialMatchQ",
+
+    "CalculusQ", "CalculusFreeQ", "IntegralFreeQ",
+    "TrigHyperbolicFreeQ", "FunctionOfTrigOfLinearQ",
+
+    "FunctionOfQ", "FunctionOfExponentialQ", "FunctionOfExponentialTest",
+    "PureFunctionOfSinQ", "PureFunctionOfCosQ",
+    "PureFunctionOfTanQ", "PureFunctionOfCotQ",
+    "FunctionOfSinQ", "FunctionOfCosQ", "FunctionOfTanQ",
+    "FunctionOfSinhQ", "FunctionOfCoshQ", "FunctionOfTanhQ",
+    "FunctionOfHyperbolicQ", "FunctionOfTrigQ",
+    "FractionalPowerSubexpressionQ",
+
+    "MergeableFactorQ",
+
     "And", "Or", "Not"
   ],
 
   "utility_functions": [
-    "NormalizeIntegrand", "SimplifyIntegrand", "Rt",
-    "Coefficient", "Exponent", "Numerator", "Denominator",
+    "NormalizeIntegrand", "SimplifyIntegrand", "SimplifyAntiderivative",
+    "NormalizeLeadTermSigns", "NormalizeSumFactors", "AbsorbMinusSign",
+    "FixSimplify", "SmartSimplify", "TogetherSimplify", "ContentFactor",
+
+    "Coefficient", "Exponent", "IntPart", "FracPart",
+    "Together", "Apart", "Cancel", "Factor", "Expand",
+    "Numerator", "Denominator", "SmartNumerator", "SmartDenominator", "Rt",
+
+    "TrigReduce", "TrigExpand", "TrigToExp", "ExpToTrig",
+    "SmartTrigExpand", "SmartTrigReduce", "TrigSimplifyAux",
+    "ActivateTrig", "DeactivateTrig",
+
     "LeadTerm", "RemainingTerms", "LeadFactor", "RemainingFactors",
-    "Simplify", "Factor", "Expand", "Together", "Cancel"
+    "LeadBase", "LeadDegree", "MergeableFactorQ", "MergeFactor", "MergeFactors",
+
+    "SubstFor", "SubstForFractionalPowerOfLinear",
+    "SubstForFractionalPowerOfQuotientOfLinears",
+    "SubstForInverseFunction", "SubstForExpn",
+
+    "D", "Dif", "Map", "Simplify", "FullSimplify", "ReplaceAll", "Mods"
   ],
 
   "extensions": [],

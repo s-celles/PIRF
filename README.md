@@ -14,7 +14,7 @@ Mathematica.
 PIRF (Portable Integration Rules Format) defines a JSON interchange
 format so that any CAS — Julia, Python/SymPy, Java/SymJa, Rust,
 JavaScript — can consume RUBI's integration knowledge with a standard
-JSON parser. No Mathematica required.
+JSON parser. No CAS software required.
 
 The format covers:
 

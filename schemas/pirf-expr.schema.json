@@ -121,6 +121,44 @@
       "enum": ["Int", "Dist", "Subst", "Simp", "ExpandIntegrand", "Unintegrable", "CannotIntegrate"]
     },
 
+    "utility-function-operators": {
+      "description": "PIRF-X-019: Utility function operators (§4.11.1-4.11.6) — algorithmic functions implemented by each Phrasebook",
+      "enum": [
+        "NormalizeIntegrand", "SimplifyIntegrand", "SimplifyAntiderivative",
+        "NormalizeLeadTermSigns", "NormalizeSumFactors", "AbsorbMinusSign",
+        "FixSimplify", "SmartSimplify", "TogetherSimplify", "ContentFactor",
+
+        "Coefficient", "Exponent", "IntPart", "FracPart",
+        "Together", "Apart", "Cancel", "Factor", "Expand",
+        "Numerator", "Denominator", "SmartNumerator", "SmartDenominator", "Rt",
+
+        "TrigReduce", "TrigExpand", "TrigToExp", "ExpToTrig",
+        "SmartTrigExpand", "SmartTrigReduce", "TrigSimplifyAux",
+        "ActivateTrig", "DeactivateTrig",
+
+        "LeadTerm", "RemainingTerms", "LeadFactor", "RemainingFactors",
+        "LeadBase", "LeadDegree", "MergeableFactorQ", "MergeFactor", "MergeFactors",
+
+        "SubstFor", "SubstForFractionalPowerOfLinear",
+        "SubstForFractionalPowerOfQuotientOfLinears",
+        "SubstForInverseFunction", "SubstForExpn",
+
+        "D", "Dif", "Map", "Simplify", "FullSimplify", "ReplaceAll", "Mods"
+      ]
+    },
+
+    "structural-utility-operators": {
+      "description": "PIRF-X-020: Structural and utility operators (§4.12)",
+      "enum": [
+        "List", "Piecewise", "Condition", "If", "With", "Module",
+        "CompoundExpression", "Rule", "Set",
+        "Floor", "Ceiling", "Round", "Mod", "Max", "Min",
+        "Sign", "Conjugate", "Re", "Im",
+        "Head", "Length", "Part", "Apply", "Scan",
+        "Catch", "Throw", "Hold", "HoldForm"
+      ]
+    },
+
     "predicate-names": {
       "description": "All predicates from §7 (PIRF-C-001 through PIRF-C-023)",
       "enum": [
