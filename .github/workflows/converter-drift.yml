@@ -6,11 +6,14 @@ on:
       - 'converter/**'
       - 'vendor/Rubi/**'
       - 'schemas/**/*.json'
+      - '.github/workflows/converter-drift.yml'
   pull_request:
     paths:
       - 'converter/**'
       - 'vendor/Rubi/**'
       - 'schemas/**/*.json'
+      - '.github/workflows/converter-drift.yml'
+  workflow_dispatch:
 
 jobs:
   drift-check:
