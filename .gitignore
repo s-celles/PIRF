@@ -30,7 +30,9 @@
 !.github/workflows/*.yml
 
 !scripts/
-!scripts/**
+!scripts/*.sh
+!scripts/Project.toml
+!scripts/*.jl
 
 !docs/
 !docs/*.md
