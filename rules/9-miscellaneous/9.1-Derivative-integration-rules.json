@@ -1,0 +1,7 @@
+{
+    "$schema": "rubi-integration-rules/v0.1",
+    "section": "9.1",
+    "title": "Derivative integration rules",
+    "rules": [
+    ]
+}

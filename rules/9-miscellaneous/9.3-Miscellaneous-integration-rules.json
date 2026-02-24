@@ -1,0 +1,18 @@
+{
+    "$schema": "rubi-integration-rules/v0.1",
+    "section": "9.3",
+    "title": "Miscellaneous integration rules",
+    "rules": [
+        {
+            "pattern": "u_",
+            "constraints": [
+            ],
+            "id": 1,
+            "result": [
+                "CannotIntegrate",
+                "u",
+                "x"
+            ]
+        }
+    ]
+}

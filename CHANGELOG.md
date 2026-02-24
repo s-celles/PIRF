@@ -18,3 +18,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - GitHub Actions workflow for CI schema validation
 - Local validation script (`validate.sh`)
 - Schema validation documentation (`docs/schema-validation.md`)
+- Julia-based Mathematica-to-PIRF converter (`converter/`)
+- Full converted RUBI dataset: 6,257 integration rules in 221 JSON files
+- Full converted test suite: 72,523 test problems in 215 JSON files
+- Updated `rules/meta.json` manifest with complete load_order (221 entries) and converter metadata
+- Predicate catalogue (77 predicates), utility function catalogue (54 + 28 structural), and operator catalogue per EARS spec
