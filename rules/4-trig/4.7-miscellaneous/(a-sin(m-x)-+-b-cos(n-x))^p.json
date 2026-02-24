@@ -1,0 +1,7 @@
+{
+    "$schema": "rubi-integration-rules/v0.1",
+    "section": "4.7",
+    "title": "(a sin(m x) + b cos(n x))^p",
+    "rules": [
+    ]
+}

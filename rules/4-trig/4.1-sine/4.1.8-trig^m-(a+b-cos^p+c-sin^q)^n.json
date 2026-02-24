@@ -1,0 +1,7 @@
+{
+    "$schema": "rubi-integration-rules/v0.1",
+    "section": "4.1.8",
+    "title": "trig^m (a+b cos^p+c sin^q)^n",
+    "rules": [
+    ]
+}
