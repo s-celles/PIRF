@@ -94,8 +94,10 @@ specific file and field that failed.
 The `pirf-expr.schema.json` schema contains enum definitions that
 document every operator and predicate in the PIRF-Expr catalogue.
 These enums are for documentation and tooling — the `operator-name`
-regex pattern (`^[A-Z][a-zA-Z0-9$]*$`) is what actually validates
-operator names in expressions.
+regex pattern (`^[a-zA-Z$][a-zA-Z0-9$]*$`) is what actually validates
+operator names in expressions. The regex accepts both PascalCase
+standard operators (e.g., `Sin`, `Add`) and lowercase inert forms
+(e.g., `sin`, `cos`) used in RUBI's trig normalization rules.
 
 | Definition | Count | Spec Reference |
 |------------|-------|----------------|
@@ -119,6 +121,35 @@ taxonomy entries, enabling machine-readable representation of the
 full RUBI hierarchy (e.g. Section 1 > 1.1 Binomial products >
 1.1.1 Linear). Subsection numbers use dotted string format
 (e.g. `"1.1"`, `"1.1.1"`, `"8.10"`).
+
+## Converter Usage
+
+The `converter/` directory contains a Julia tool that converts RUBI's
+Mathematica source files to PIRF JSON format. See `converter/README.md`
+for full documentation.
+
+### Quick Start
+
+```bash
+# Initialize git submodules (RUBI source + test suite)
+git submodule update --init
+
+# Convert rules, tests, and update manifest
+julia --project=converter converter/scripts/convert.jl --rules
+julia --project=converter converter/scripts/convert.jl --tests
+julia --project=converter converter/scripts/convert.jl --manifest
+
+# Validate all generated files
+./validate.sh
+```
+
+### Expected Output
+
+| Artifact | Directory | Files | Items |
+|----------|-----------|-------|-------|
+| Rules | `rules/` | 221 | 6,257 rules |
+| Tests | `tests/` | 215 | 72,523 test problems |
+| Manifest | `rules/meta.json` | 1 | load_order + counts |
 
 ## Updating Schemas
 
