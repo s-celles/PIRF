@@ -24,7 +24,7 @@ pip install check-jsonschema
 ### Validate All Files
 
 ```bash
-./validate.sh
+scripts/validate.sh
 ```
 
 This runs all 4 validation steps and reports pass/fail for each.
@@ -140,7 +140,7 @@ julia --project=converter converter/scripts/convert.jl --tests
 julia --project=converter converter/scripts/convert.jl --manifest
 
 # Validate all generated files
-./validate.sh
+scripts/validate.sh
 ```
 
 ### Expected Output
@@ -158,6 +158,6 @@ When modifying schemas:
 1. Edit the schema file in `schemas/`.
 2. Run `check-jsonschema --check-metaschema schemas/*.schema.json` to
    verify the schema is still valid.
-3. Run `./validate.sh` to verify existing data files still pass.
+3. Run `scripts/validate.sh` to verify existing data files still pass.
 4. Commit the schema change alongside any data file changes.
 5. Include a migration note in the PR describing impact on consumers.

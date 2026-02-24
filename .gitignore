@@ -29,7 +29,8 @@
 !.github/**
 !.github/workflows/*.yml
 
-!validate.sh
+!scripts/
+!scripts/**
 
 !docs/
 !docs/*.md
