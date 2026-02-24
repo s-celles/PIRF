@@ -8,8 +8,8 @@
 
     "operator-name": {
       "type": "string",
-      "pattern": "^[A-Z][a-zA-Z0-9$]*$",
-      "description": "PascalCase operator name per PIRF-X-004"
+      "pattern": "^[a-zA-Z$][a-zA-Z0-9$]*$",
+      "description": "Operator name (PascalCase for standard operators, lowercase for inert forms like sin/cos). Per PIRF-X-004."
     },
 
     "symbol": {
@@ -36,11 +36,21 @@
       "description": "Sequence wildcard: xs__ (BlankSequence, 1+), xs___ (BlankNullSequence, 0+). Per PIRF-W-006."
     },
 
+    "function-head": {
+      "description": "Function head: an operator name or a pattern variable in operator position (e.g., F_[x] in higher-order rules). Per PIRF-X-004.",
+      "oneOf": [
+        { "$ref": "#/definitions/operator-name" },
+        { "$ref": "#/definitions/wildcard-mandatory" },
+        { "$ref": "#/definitions/wildcard-optional" },
+        { "$ref": "#/definitions/wildcard-sequence" }
+      ]
+    },
+
     "function-expr": {
       "type": "array",
       "minItems": 2,
       "items": [
-        { "$ref": "#/definitions/operator-name" }
+        { "$ref": "#/definitions/function-head" }
       ],
       "additionalItems": {
         "$ref": "#/definitions/pirf-expr"
